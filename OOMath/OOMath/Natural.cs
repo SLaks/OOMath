@@ -64,16 +64,25 @@
 		#endregion
 
 		public static Natural operator +(Natural a, Natural b) {
+			if (a == null || b == null) return null;
+
 			Natural result = a;
 			for (var i = b; i != Zero; i = i.Previous)
 				result = new Natural(result);
 			return result;
 		}
 		public static Natural operator *(Natural a, Natural b) {
+			if (a == null || b == null) return null;
+
 			Natural result = Zero;
 			for (var i = b; i != Zero; i = i.Previous)
 				result += a;
 			return result;
+		}
+
+		public static Natural operator ++(Natural a) {
+			if (a == null) return null;
+			return new Natural(a);
 		}
 	}
 }
