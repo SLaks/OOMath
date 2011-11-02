@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOMath.Tests", "OOMath.Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64C41DAE-A0B1-4D73-8732-D0E37CF47148}"
 	ProjectSection(SolutionItems) = preProject
+		CodeCoverage.testsettings = CodeCoverage.testsettings
 		Local.testsettings = Local.testsettings
 		OOMath.ruleset = OOMath.ruleset
 		OOMath.vsmdi = OOMath.vsmdi
