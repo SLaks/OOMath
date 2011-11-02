@@ -57,22 +57,15 @@ namespace OOMath.Tests {
 		[TestMethod]
 		public void ThoroughNaturalToStringTest() {
 			for (int i = 0; i < 200; i++) {
-				var num = rand.Next(54321);
+				var num = rand.Next(4321);
 				var toBase = bases[rand.Next(bases.Length)];
 
 				Assert.AreEqual(
 					Convert.ToString(num, toBase),
-					NumberFormatter.ForBase(toBase).ToString(ToNatural((ulong)num)),
+					NumberFormatter.ForBase(toBase).ToString(Conversion.ToNatural(num)),
 					ignoreCase: true
 				);
 			}
-		}
-
-		static Natural ToNatural(ulong num) {
-			var retVal = Natural.Zero;
-			for (ulong i = 0; i < num; i++)
-				retVal = new Natural(retVal);
-			return retVal;
 		}
 	}
 }

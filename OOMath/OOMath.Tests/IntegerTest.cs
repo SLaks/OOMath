@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace OOMath.Tests {
 
@@ -104,6 +105,20 @@ namespace OOMath.Tests {
 
 			Assert.AreEqual(Integer.Zero, Integer.Negative(Natural.Three) * Integer.Zero);
 			Assert.AreEqual(Integer.Zero, Integer.Zero * Integer.Positive(Natural.Three));
+		}
+
+		static readonly Random rand = new Random();
+		[TestMethod]
+		public void ThoroughArithmeticTest() {
+			for (int i = 0; i < 100; i++) {
+				int b1 = rand.Next(-123, 123), b2 = rand.Next(-321, 321);
+				Integer m1 = Conversion.ToInteger(b1), m2 = Conversion.ToInteger(b2);
+
+				Assert.AreEqual(b1 + b2, Conversion.ToInt32(m1 + m2));
+				Assert.AreEqual(-b1 + b2, Conversion.ToInt32(-m1 + m2));
+				Assert.AreEqual(b1 - b2, Conversion.ToInt32(m1 - m2));
+				Assert.AreEqual(b1 * b2, Conversion.ToInt32(m1 * m2));
+			}
 		}
 	}
 }
