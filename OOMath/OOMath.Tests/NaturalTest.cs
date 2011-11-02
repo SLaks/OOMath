@@ -82,5 +82,17 @@ namespace OOMath.Tests {
 			Assert.IsTrue(Natural.Three > Natural.Zero);
 			Assert.IsTrue(Natural.Zero < Natural.Three);
 		}
+
+		[TestMethod]
+		public void MultiplicationTest() {
+			Assert.AreEqual(Natural.Six, Natural.Two * Natural.Three);
+			Assert.AreEqual(Natural.Six, Natural.Three * Natural.Two);
+
+			Assert.AreEqual(Natural.Four, Natural.Four * Natural.One);
+			Assert.AreEqual(Natural.Four, Natural.One * Natural.Four);
+
+			Assert.AreEqual(Natural.Zero, Natural.Zero * Natural.Two);
+			Assert.AreEqual(Natural.Zero, Natural.Two * Natural.Zero);
+		}
 	}
 }

@@ -6,6 +6,7 @@
 		public static readonly Natural Three = new Natural(Two);
 		public static readonly Natural Four = new Natural(Three);
 		public static readonly Natural Five = new Natural(Four);
+		public static readonly Natural Six = new Natural(Five);
 
 		private Natural() { }	//Creates Zero
 
@@ -66,6 +67,12 @@
 			Natural result = a;
 			for (var i = b; i != Zero; i = i.Previous)
 				result = new Natural(result);
+			return result;
+		}
+		public static Natural operator *(Natural a, Natural b) {
+			Natural result = Zero;
+			for (var i = b; i != Zero; i = i.Previous)
+				result += a;
 			return result;
 		}
 	}
