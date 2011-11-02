@@ -58,6 +58,9 @@ namespace OOMath.Tests {
 
 		[TestMethod]
 		public void AdditionTest() {
+			Assert.IsNull(Natural.Five + null);
+			Assert.IsNull(null + Natural.Five);
+
 			Assert.AreEqual(Natural.Five, Natural.Two + Natural.Three);
 			Assert.AreEqual(Natural.Five, Natural.Three + Natural.Two);
 
@@ -67,6 +70,9 @@ namespace OOMath.Tests {
 
 		[TestMethod]
 		public void ComparisonTest() {
+			Assert.IsTrue(Natural.Five >= null);
+			Assert.IsFalse(null >= Natural.Five);
+
 			Assert.IsTrue(Natural.Three < Natural.Five);
 			Assert.IsTrue(Natural.Five > Natural.Three);
 
@@ -85,6 +91,9 @@ namespace OOMath.Tests {
 
 		[TestMethod]
 		public void MultiplicationTest() {
+			Assert.IsNull(Natural.Five * null);
+			Assert.IsNull(null * Natural.Five);
+
 			Assert.AreEqual(Natural.Six, Natural.Two * Natural.Three);
 			Assert.AreEqual(Natural.Six, Natural.Three * Natural.Two);
 

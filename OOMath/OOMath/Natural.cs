@@ -50,12 +50,12 @@
 
 		public static bool operator <(Natural a, Natural b) {
 			if (ReferenceEquals(a, b)) return false;
-			if (ReferenceEquals(a, null)) return false;
+			if (ReferenceEquals(a, null)) return true;
 			return a.CompareTo(b) < 0;
 		}
 		public static bool operator <=(Natural a, Natural b) {
 			if (ReferenceEquals(a, b)) return true;
-			if (ReferenceEquals(a, null)) return false;
+			if (ReferenceEquals(a, null)) return true;
 			return a.CompareTo(b) <= 0;
 		}
 
