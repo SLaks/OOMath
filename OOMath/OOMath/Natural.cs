@@ -1,5 +1,5 @@
 ﻿namespace OOMath {
-	public class Natural : System.IEquatable<Natural> {
+	public class Natural : System.IEquatable<Natural>, System.IComparable<Natural> {
 		public static readonly Natural Zero = new Natural();
 		public static readonly Natural One = new Natural(Zero);
 		public static readonly Natural Two = new Natural(One);
@@ -34,18 +34,32 @@
 		#endregion
 
 		#region Comparisons
-		public static bool operator <(Natural a, Natural b) {
-			if (a == null) return false;
-			//Count down from a - 1.  If we meet b on the way, b < a.
-			for (var i = a.Previous; i != Zero; i = i.Previous)
-				if (i == b)
-					return true;
-			return false;
+		public int CompareTo(Natural other) {
+			if (other == null) return 1;
+			if (other == this) return 0;
+			if (this == Zero) return -1;
+			if (other == Zero) return 1;
+
+			//Count down from this - 1.  If we meet other on the way, this > other.
+			for (var i = Previous; i != Zero; i = i.Previous)
+				if (i.Equals(other))
+					return 1;
+			return -1;
 		}
 
-		public static bool operator <=(Natural a, Natural b) { return a == b || a < b; }
-		public static bool operator >(Natural a, Natural b) { return !(a <= b); }
-		public static bool operator >=(Natural a, Natural b) { return !(a < b); }
+		public static bool operator <(Natural a, Natural b) {
+			if (ReferenceEquals(a, b)) return false;
+			if (ReferenceEquals(a, null)) return false;
+			return a.CompareTo(b) < 0;
+		}
+		public static bool operator <=(Natural a, Natural b) {
+			if (ReferenceEquals(a, b)) return true;
+			if (ReferenceEquals(a, null)) return false;
+			return a.CompareTo(b) <= 0;
+		}
+
+		public static bool operator >(Natural a, Natural b) { return b < a; }
+		public static bool operator >=(Natural a, Natural b) { return b <= a; }
 		#endregion
 
 		public static Natural operator +(Natural a, Natural b) {
