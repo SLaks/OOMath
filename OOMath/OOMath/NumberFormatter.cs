@@ -15,7 +15,7 @@ namespace OOMath {
 
 		public static readonly NumberFormatter Base10 = new NumberFormatter('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
 		public static NumberFormatter ForBase(int toBase) {
-			if (toBase < 2 || toBase > 36) throw new System.ArgumentOutOfRangeException("base");
+			if (toBase < 2 || toBase > 36) throw new System.ArgumentOutOfRangeException("toBase");
 			if (toBase <= 10)
 				return new NumberFormatter(Base10.Digits.Take(toBase));
 			else
