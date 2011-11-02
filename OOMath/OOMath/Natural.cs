@@ -1,5 +1,5 @@
 ﻿namespace OOMath {
-	public class Natural : System.IEquatable<Natural>, System.IComparable<Natural> {
+	public partial class Natural : System.IEquatable<Natural>, System.IComparable<Natural> {
 		public static readonly Natural Zero = new Natural();
 		public static readonly Natural One = new Natural(Zero);
 		public static readonly Natural Two = new Natural(One);
