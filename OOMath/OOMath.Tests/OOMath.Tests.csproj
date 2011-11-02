@@ -50,6 +50,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IntegerTest.cs" />
     <Compile Include="NaturalTest.cs" />
     <Compile Include="NumberFormatterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

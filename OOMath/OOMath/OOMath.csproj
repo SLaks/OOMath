@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="NumberFormatter.cs" />
     <Compile Include="Natural.cs" />
+    <Compile Include="Ordered-Pair Integer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

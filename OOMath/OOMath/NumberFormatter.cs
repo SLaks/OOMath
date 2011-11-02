@@ -25,6 +25,8 @@ namespace OOMath {
 		}
 
 		public string ToString(Natural number) {
+			if (number == null) return "";
+
 			IList<int> resultDigits = new List<int> { 0 };
 			for (var i = number; i != Natural.Zero; i = i.Previous) {
 				Increment(resultDigits, 0);
@@ -41,9 +43,23 @@ namespace OOMath {
 					Increment(list, position + 1);
 			}
 		}
+
+		public string ToString(Integer number) {
+			if (number == null)
+				return "";
+			if (number == Integer.Zero)
+				return Digits[0].ToString();
+			if (number.IsPositive)
+				return ToString(number.Magnitude);
+			return "-" + ToString(number.Magnitude);
+		}
 	}
 
 	partial class Natural {
+		public override string ToString() { return NumberFormatter.Base10.ToString(this); }
+	}
+
+	partial class Integer {
 		public override string ToString() { return NumberFormatter.Base10.ToString(this); }
 	}
 }
