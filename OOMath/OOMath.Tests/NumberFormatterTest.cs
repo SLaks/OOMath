@@ -67,5 +67,27 @@ namespace OOMath.Tests {
 				);
 			}
 		}
+
+		[TestMethod]
+		public void BasicIntegerToStringTest() {
+			Assert.AreEqual("4", NumberFormatter.Base10.ToString(Integer.Positive(Natural.Four)));
+			Assert.AreEqual("0", NumberFormatter.Base10.ToString(Integer.Zero));
+			Assert.AreEqual("-6", NumberFormatter.Base10.ToString(Integer.Negative(Natural.Six)));
+		}
+		[TestMethod]
+		public void ThoroughIntegerToStringTest() {
+			for (int i = 0; i < 200; i++) {
+				var num = rand.Next(-321, 321);
+				var toBase = bases[rand.Next(bases.Length)];
+				if (num < 0)
+					toBase = 10;	//.Net does negatives differently in different bases
+
+				Assert.AreEqual(
+					Convert.ToString(num, toBase),
+					NumberFormatter.ForBase(toBase).ToString(Conversion.ToInteger(num)),
+					ignoreCase: true
+				);
+			}
+		}
 	}
 }
