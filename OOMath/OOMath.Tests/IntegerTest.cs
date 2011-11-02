@@ -66,6 +66,26 @@ namespace OOMath.Tests {
 		}
 
 		[TestMethod]
+		public void EqualityTest() {
+			Assert.IsTrue((Integer)null == null);
+			Assert.IsTrue((Integer)null != Integer.Zero);
+
+			Assert.IsTrue(Integer.MinusOne == Integer.Negative(Natural.Two) + Integer.One);
+		}
+
+		[TestMethod]
+		public void ComparisonTest() {
+			Assert.IsTrue(Integer.Positive(Natural.Three) > Integer.Positive(Natural.Two));
+			Assert.IsFalse(Integer.Positive(Natural.Three) < Integer.Positive(Natural.Two));
+
+			Assert.IsTrue(Integer.Positive(Natural.Three) >= Integer.Positive(Natural.Three));
+			Assert.IsTrue(Integer.Positive(Natural.Three) <= Integer.Positive(Natural.Three));
+
+			Assert.IsTrue(Integer.Positive(Natural.Two) > Integer.Negative(Natural.Three));
+			Assert.IsTrue(Integer.Negative(Natural.Three) < Integer.Positive(Natural.Two));
+		}
+
+		[TestMethod]
 		public void AdditionTest() {
 			Assert.AreEqual(Integer.Positive(Natural.Five), Integer.Positive(Natural.Three) + Integer.Positive(Natural.Two));
 			Assert.AreEqual(Integer.Positive(Natural.Five), Integer.Positive(Natural.Two) + Integer.Positive(Natural.Three));
@@ -118,6 +138,9 @@ namespace OOMath.Tests {
 				Assert.AreEqual(-b1 + b2, Conversion.ToInt32(-m1 + m2));
 				Assert.AreEqual(b1 - b2, Conversion.ToInt32(m1 - m2));
 				Assert.AreEqual(b1 * b2, Conversion.ToInt32(m1 * m2));
+
+				Assert.AreEqual(b1 < b2, m1 < m2);
+				Assert.AreEqual(b1 >= b2, m1 >= m2);
 			}
 		}
 	}

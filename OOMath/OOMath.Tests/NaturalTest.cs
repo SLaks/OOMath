@@ -54,7 +54,7 @@ namespace OOMath.Tests {
 
 			Assert.IsTrue((Natural)null == null);
 			Assert.IsTrue((Natural)null != Natural.Four);
-			Assert.IsTrue(Natural.Four != null);
+			Assert.IsTrue(Natural.Zero != null);
 		}
 
 		[TestMethod]
@@ -114,6 +114,9 @@ namespace OOMath.Tests {
 
 				Assert.AreEqual(b1 + b2, Conversion.ToInt32(m1 + m2));
 				Assert.AreEqual(b1 * b2, Conversion.ToInt32(m1 * m2));
+
+				Assert.AreEqual(b1 < b2, m1 < m2);
+				Assert.AreEqual(b1 >= b2, m1 >= m2);
 			}
 		}
 	}
