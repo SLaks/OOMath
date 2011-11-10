@@ -37,15 +37,20 @@
 		#region Comparisons
 		public int CompareTo(Natural other) {
 			if (other == null) return 1;
-			if (other == this) return 0;
-			if (this == Zero) return -1;
-			if (other == Zero) return 1;
 
-			//Count down from this - 1.  If we meet other on the way, this > other.
-			for (var i = Previous; i != Zero; i = i.Previous)
-				if (i.Equals(other))
+			//Count down from both numbers and see which one reaches 0 first.
+			var me = this;
+			while (true) {
+				other = other.Previous;
+				me = me.Previous;
+
+				if (me == null && other == null)
+					return 0;
+				if (me == null)
+					return -1;
+				if (other == null)
 					return 1;
-			return -1;
+			}
 		}
 
 		public static bool operator <(Natural a, Natural b) {
